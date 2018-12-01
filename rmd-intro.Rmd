@@ -1,0 +1,285 @@
+---
+output:
+  xaringan::moon_reader:
+    self_contained: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+<style>
+h1   {color: rgb(0, 128, 128);}
+h2   {color: rgb(0, 128, 128);}
+h3   {color: rgb(0, 128, 128);}
+h4   {color: rgb(0, 128, 128);}
+
+/* .remark-slide-content { */
+/*   padding-top: 20px; */
+/*   padding-left: 20px; */
+/*   padding-right: 20px; */
+/*   padding-bottom: 20px; */
+/* } */
+.remark-slide-content > h1:first-of-type {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.remark-slide-content > h2:first-of-type {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+a:link {
+    color:  #1f618d;
+}
+
+a:visited {
+    color:  #1f618d;
+}
+
+
+.small { font-size: 70% }
+</style>
+
+# An introduction to R markdown for reproducible research
+
+
+<br>
+
+```
+Stephen J Eglen                  Cambridge Computational Biology Institute
+https://sje30.github.io          University of Cambridge
+sje30@cam.ac.uk                  @StephenEglen
+```
+
+
+Slides: http://bit.ly/eglen2018-rmd (CC-BY license)
+
+
+<br>
+
+#### Acknowledgements
+
+Paul Charlseworth, Ellese Cotterill, Catherine Cutts, Tom Edinburgh,
+BBSRC, EPSRC, Wellcome Trust, Software Sustainability Institute.
+
+
+<!-- 
+(Last update `r date()`) 
+ -->
+
+
+```{r,include=FALSE}
+require(printr)
+require(knitr)
+require(xtable)
+pbr = function(text) {
+  x = '<div style="font-size: 60%; position: absolute; right: 15%;   width: fit-content; height: fit-content; top:95%; z-index:10">'
+  sprintf("%s%s</div>", x, text)
+}
+doi = function(doi) {
+  ##text=sprintf("[%s](http://dx.doi.org/%s)", doi, doi)
+  text=sprintf('<a href="http://dx.doi.org/%s">%s</a>', doi, doi)
+  pbr(text)
+}
+im = function(f, width=NULL, height=NULL) {
+  if (!is.null(width)) {
+    line = sprintf('<img src="%s", width=%s>',
+                   knitr::image_uri(f), width)
+  } else {
+    if (!is.null(height)) {
+      line = sprintf('<img src="%s", height=%s>',
+                     knitr::image_uri(f), height)
+    } else {
+      line = sprintf('<img src="%s">', knitr::image_uri(f))
+    }
+  }
+  line
+}
+im1 = function(f,width=600) {
+  sprintf('<center><img src="%s", width=%s></center>\n', knitr::image_uri(f), width)
+}
+imh = function(f,height=600) {
+  sprintf('<center><img src="%s", height=%s></center>\n', knitr::image_uri(f), height)
+}
+```
+
+
+<!-- --- -->
+
+<!-- <br> -->
+<!-- <br> -->
+
+<!-- `r im1('~/papers/talks/talkfigs/2017/prestige1975_title.png', width=730)` -->
+
+---
+
+# The reproducibility crisis
+
+Many key findings in publications are either not independently
+verified, or fail verification when it is attempted (Baker, 2016).
+`r doi("10.1038/533452a")`
+
+<br>
+Duke oncogenomics scandal.  Awesome detective work by Keith Baggerley
+and Kevin Coombes.
+<https://www.youtube.com/watch?v=7gYIs7uYbMo>
+
+
+<br>
+<br>
+
+Disclaimer: do I mean "reproducibility" or "replicability"?
+(Barba 2018) <https://arxiv.org/pdf/1802.03311.pdf>
+
+
+---
+
+
+# Literate programming
+
+Donald Knuth invented the literate programming environment to combine
+code and documentation into one file.
+
+In our context, we interweave R code and markdoen 
+
+
+# Inverse problems are hard
+
+.pull-left[
+<br>
+```{r,include=TRUE,echo=FALSE}
+grades <- data.frame("Mark"= c("70-100", "60-69", "50-59", "40-49", "0-39"),
+grade=LETTERS[c(1,2,3,4,6)])
+kable(grades, format="html")
+```
+]
+.pull-right[
+### Forward problem
+
+I scored 68, what was my grade?
+
+### Inverse problem
+
+I got a B, what was my score?
+]
+
+
+---
+# Moral or selfish approach?
+
+<br>
+
+`r imh("../../talkfigs/2016/Markowetz2015-selfish.png", 400)`
+
+`r doi("10.1186/s13059-015-0850-7")`
+---
+# Selfish reasons to share
+
+Why not align what is good for science with what is good for
+scientists?
+
+
+1. Funding mandates (REF + enforcement from Wellcome Trust)
+2. Credit through data papers
+3. Fixes data bugs / errors in analysis
+4. Prevent data loss [(Vines et al 2014)](http://www.ncbi.nlm.nih.gov/pubmed/24361065). e.g. students have a habit of leaving...
+5. Your future self is probably one of the main beneficiaries of
+   sharing.
+6. *Now* is a very good time to be an open scientist.
+7. Leads to further collaborations
+8. Reviewers can do more work...
+
+
+---
+# Simple example of reproducible research
+
+Eglen SJ (2016) Bivariate spatial point patterns in the retina: a
+reproducible review. Journal de la Société Française de Statistique
+157:33–48.
+
+`r imh("~/papers/talks/2017/2017-01-16-cam/figs/eg-eglen2015-rr.png", 400)`
+
+See
+<!-- [paper](http://journal-sfds.fr/index.php/J-SFdS/article/view/518/490) -->
+[paper](https://doi.org/10.1101/029348)
+or [code](http://github.com/sje30/eglen2015).  [Docker image](https://hub.docker.com/r/sje30/eglen2015/).
+
+
+
+---
+# New tools
+
+1. **Docker** Can bundle entire open-source evironment for others to share.
+2. Jupyter notebooks
+3. binder = Docker + jupyter + cloud compute
+4. Code ocean, and alternatives, being supported by some journal publishers,
+   e.g. CUP.
+
+`r imh('~/papers/talks/2016/2016-07-04-copenhagen/figs/2p-ram-github.png',
+300)`
+
+[https://github.com/sofroniewn/2pRAM-paper](https://github.com/sofroniewn/2pRAM-paper)
+
+---
+# Binder example for teaching
+
+Two hour introduction to computational neuroscience (this Thursday if
+anyone is interested...)
+
+[Binder](https://mybinder.org/v2/gh/sje30/julia-python/master?filepath=Introduction%20to%20Computational%20Neuroscience.ipynb)
+[Github](https://github.com/sje30/julia-python)
+
+---
+# Find a code buddy
+
+* We ask our students to submit a .Rnw file rather than a pdf.  You get
+a zero if I can't compile the pdf.
+* So, ask someone else if they can run your code.
+* Bioconductor team performs code review
+* Journals gradually moving in this direction
+
+
+---
+## Reproducible figures
+
+<!-- Never mind making a whole paper reproducible, how about just one figure? -->
+
+```{r patchwork,chunk=FALSE,include=FALSE}
+##devtools::install_github("thomasp85/patchwork")
+read_chunk('~/langs/R/patchwork.R',labels='p1')
+```
+
+```{r p1,message=FALSE,chunk=FALSE,fig.width=8,fig.height=5}
+```
+
+---
+## Won't this be slow?
+
+Q: "If R is always re-running the analysis every time I edit my paper,
+won't this be slow?"
+
+A: Yes.  In which case, use the **cache**.
+
+
+---
+## Rstudio features for working with Rmd files
+
+---
+# Summary
+
+* Find the selfish reasons to make your research reproducible.
+* Adopt good practices to help you on your way.
+* Writing code in groups can be very motivating.
+* Use new tech if you want, but old tech works too.
+
+---
+# Challenges
+
+* Long computation times (CODE CHECK).
+* licensed software complicates everything.
+* Can journals handle reproducible documents?
+* When is the best time to think reproducibly?  
+   - Too early (explore  first) 
+   - Too late (paper now out)?
+* Technical challenges << Societal challenges

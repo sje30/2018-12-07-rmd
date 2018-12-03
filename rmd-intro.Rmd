@@ -60,9 +60,7 @@ Slides: http://bit.ly/eglen2018-rmd (CC-BY license)
 
 #### Acknowledgements
 
-Paul Charlseworth, Ellese Cotterill, Catherine Cutts, Tom Edinburgh,
-BBSRC, EPSRC, Wellcome Trust, Software Sustainability Institute.
-
+Laurent Gatto, Mike Smith.
 
 <!-- 
 (Last update `r date()`) 
@@ -104,14 +102,6 @@ imh = function(f,height=600) {
 }
 ```
 
-
-<!-- --- -->
-
-<!-- <br> -->
-<!-- <br> -->
-
-<!-- `r im1('~/papers/talks/talkfigs/2017/prestige1975_title.png', width=730)` -->
-
 ---
 
 # The reproducibility crisis
@@ -141,28 +131,11 @@ Disclaimer: do I mean "reproducibility" or "replicability"?
 Donald Knuth invented the literate programming environment to combine
 code and documentation into one file.
 
-In our context, we interweave R code and markdoen 
+In our context, we interweave R code and markdown.  R code is executed
+and results (text, figures, tables) fed back into markdown.  Markdown
+then translated into html (or pdf or Word or slides...).
 
-
-# Inverse problems are hard
-
-.pull-left[
-<br>
-```{r,include=TRUE,echo=FALSE}
-grades <- data.frame("Mark"= c("70-100", "60-69", "50-59", "40-49", "0-39"),
-grade=LETTERS[c(1,2,3,4,6)])
-kable(grades, format="html")
-```
-]
-.pull-right[
-### Forward problem
-
-I scored 68, what was my grade?
-
-### Inverse problem
-
-I got a B, what was my score?
-]
+`r imh("rmd-to-md.png", 400)`
 
 
 ---
@@ -205,39 +178,75 @@ See
 [paper](https://doi.org/10.1101/029348)
 or [code](http://github.com/sje30/eglen2015).  [Docker image](https://hub.docker.com/r/sje30/eglen2015/).
 
+See other examples at: <https://rmarkdown.rstudio.com/gallery.html>
 
 
 ---
-# New tools
+## What is markdown?
 
-1. **Docker** Can bundle entire open-source evironment for others to share.
-2. Jupyter notebooks
-3. binder = Docker + jupyter + cloud compute
-4. Code ocean, and alternatives, being supported by some journal publishers,
-   e.g. CUP.
+A light-weight markup language for generating HTML.
 
-`r imh('~/papers/talks/2016/2016-07-04-copenhagen/figs/2p-ram-github.png',
-300)`
+```
+### Example
 
-[https://github.com/sofroniewn/2pRAM-paper](https://github.com/sofroniewn/2pRAM-paper)
+Here is some *markup text* with **bold** and a
+[link](http://www.rstudio.org).
+Maths can be included $x^2 + y^2 = z^2$.
+```
 
----
-# Binder example for teaching
+### Example
 
-Two hour introduction to computational neuroscience (this Thursday if
-anyone is interested...)
-
-[Binder](https://mybinder.org/v2/gh/sje30/julia-python/master?filepath=Introduction%20to%20Computational%20Neuroscience.ipynb)
-[Github](https://github.com/sje30/julia-python)
+Here is some *markup text* with **bold** and a
+[link](http://www.rstudio.org).
+Maths can be included $x^2 + y^2 = z^2$.
 
 ---
-# Find a code buddy
+## Embedding code: inline
 
-* We ask our students to submit a .Rnw file rather than a pdf.  You get
-a zero if I can't compile the pdf.
-* So, ask someone else if they can run your code.
-* Bioconductor team performs code review
-* Journals gradually moving in this direction
+Take a chunk like:
+
+Simple snippets of code can be embedded like ​‘r sqrt(144)‘ is the
+square root of 144. 
+
+(NB: the backtick character above.)
+
+which makes:
+
+Simple snippets of code can be embedded like `r sqrt(144)` is the
+square root of 144.
+
+---
+## Embedding code: chunks
+
+Or a chunk of code
+
+    `​``{r eval=TRUE}
+    n = 10
+    rnorm(n)
+    `​``
+
+which makes this output:
+
+```{r eval=TRUE}
+n = 10
+rnorm(n)
+```
+
+
+---
+## Figure outputs
+
+If your code generates a figure, it is saved into `figures/` folder and included in output.  (See
+bookdown for captions and references).
+
+	`​``{r eval=TRUE, echo=TRUE, fig.height=4}
+	x = rnorm(300, mean=4, sd=2)
+	hist(x)
+    `​``
+```{r eval=TRUE,echo=TRUE,fig.height=4}
+x = rnorm(300, mean=4, sd=2)
+hist(x)
+```
 
 
 ---
@@ -263,15 +272,18 @@ A: Yes.  In which case, use the **cache**.
 
 
 ---
-## Rstudio features for working with Rmd files
+## Rstudio demonstration
+
+Create a new document with a simple structure.  See header and options
+for compiling document.
 
 ---
-# Summary
+## Bookdown
 
-* Find the selfish reasons to make your research reproducible.
-* Adopt good practices to help you on your way.
-* Writing code in groups can be very motivating.
-* Use new tech if you want, but old tech works too.
+Bookdown sits atop knitr and provides extra features for writing a
+book (captioning figures and tables, labels to refer to sections).
+
+<https://bookdown.org/>  <https://bookdown.org/yihui/bookdown/>
 
 ---
 # Challenges
@@ -283,3 +295,20 @@ A: Yes.  In which case, use the **cache**.
    - Too early (explore  first) 
    - Too late (paper now out)?
 * Technical challenges << Societal challenges
+
+
+---
+# Extended example
+
+Let's work through the document to estimate pi.
+
+You will need `estimatek.Rmd` and `refs.bib`
+
+
+---
+# Next steps
+
+* Material from today at: <http://github.com/sje30/2018-12-07-rmd>
+* Jupyter <www.jupyter.org> as alternative format for notebook
+  computation.
+* Two-way Rmd <-> docx conversion: <https://noamross.github.io/redoc/>

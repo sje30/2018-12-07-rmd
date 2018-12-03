@@ -18,7 +18,7 @@ documentation and R code within the same file, similar to Sweave.  For
 this document, the master file is `estimatek.Rmd`.  This is processed
 by knitr in R, which runs the R code to generate textual/graphical
 output, and also creates a HTML document.  On recent machines, once
-	bookdown, rmarkdown and knitr are installed, you should be able to
+bookdown, rmarkdown and knitr are installed, you should be able to
 generate the html using:
 
 ```{r eval=FALSE,include=TRUE}

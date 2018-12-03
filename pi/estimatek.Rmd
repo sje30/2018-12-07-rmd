@@ -3,6 +3,7 @@ title: "Example knitr document: estimating PI"
 author: Stephen J Eglen
 output: 
   bookdown::html_document2: 
+    toc: true
     fig_caption: yes
 bibliography: refs.bib
 link-citations: true
@@ -17,8 +18,8 @@ documentation and R code within the same file, similar to Sweave.  For
 this document, the master file is `estimatek.Rmd`.  This is processed
 by knitr in R, which runs the R code to generate textual/graphical
 output, and also creates a HTML document.  On recent machines, once
-	bookdown, rmarkdown and kntir are installed, you should be able to
-generate the pdf using:
+	bookdown, rmarkdown and knitr are installed, you should be able to
+generate the html using:
 
 ```{r eval=FALSE,include=TRUE}
 require(rmarkdown)
@@ -27,15 +28,12 @@ render('estimatek.Rnw')
 
 Within RStudio, there is a handy "Knit HTML"  button.
 
-knitr is newer than Sweave, and is more flexible.  Both estimatek.Rmd
-and estimatek.html are available from:
-https://github.com/lgatto/spr/tree/master/estimate (you will need
-`estimatek.Rmd` and `diff.R`)
 
-One key difference between Sweave and knitr is that knitr has built-in
-support for caching.  By default it is turned off in this document,
-but change FALSE to TRUE in the following code-chunk and see if you
-can work out what happens:
+## knitr setup {#caching}
+
+One useful facility in knitr is it has built-in support for caching.
+By default it is turned off in this document, but change FALSE to TRUE
+in the following code-chunk and see if you can work out what happens:
 
 ```{r setup,collapse=TRUE}
 require(knitr)
@@ -151,14 +149,15 @@ Further details are available at <https://rmarkdown.rstudio.com/authoring_biblio
 
 1. Add an extra set of trials for n=10 darts thrown.
 
-2. Experiment switching the cache on.  Where are the intermediate
-   results stored?  When is the code rerun?
+2. Experiment switching the cache on (Section \@ref(caching)).  Where
+   are the intermediate results stored?  When is the code rerun?
 
 3. Add another reference to the document.  (BibTeX entries can be
    downloaded from Google Scholar, amongst other places.)
 
 4. Can you get pdf output as well as HTML output?  (Hint: check Makefile)
 
+5. Explore the printr package for printing tables and matrices <https://yihui.name/printr/>.
 
 
 ## Compiling this document

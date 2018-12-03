@@ -1,0 +1,40 @@
+---
+title: "My first Rmd file"
+author: "Stephen J Eglen"
+date: "3 December 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+This is my first Rmd document.  I will demonstrate an inline
+calculation to generate 3 random numbers: `r rnorm(3)` and then a code
+chunk:
+
+```{r,collapse=TRUE}
+x = rnorm(500, mean=5, sd=2)
+head(x)
+mean(x)
+sd(x)
+```
+
+And now we want to check that x is drawn from a Normal distribution
+
+```{r, fig.height=4}
+hist(x, prob=T)
+abline(v=5, col='red')
+curve(dnorm(x, mean=5, sd=2), add=T, col='blue')
+```
+
+# Summary
+
+It works.
+
+<!-- 
+This is a simple first example to generate live.
+ render("first.Rmd", output_format=pdf_document()) 
+ -->

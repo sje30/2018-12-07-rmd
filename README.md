@@ -2,6 +2,8 @@
 
 These are the files to accompany the talk on Rmarkdown.
 
+![rmd-intro.png](.img "Slide 1")
+
 ## Handouts
 
 1. [R markdown cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)

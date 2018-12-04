@@ -12,9 +12,9 @@ These are the files to accompany the talk on Rmarkdown.
 
 ## Slides
 
-[HTML slides](rmd_intro.html)  (may be slow to render; best viewed in
+[HTML slides](https://sje30.github.io/talks/2018/rmd-intro.html)  (may be slow to render; best viewed in
 Chrome).
-[PDF copy](rmd_intro.pdf) (some fonts may not appear correctly, W
+[PDF copy](https://sje30.github.io/talks/2018/rmd-intro.pdf) (warning; italics missing!)
 
 ## Estimate requirements
 

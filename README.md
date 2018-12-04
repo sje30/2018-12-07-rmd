@@ -2,7 +2,7 @@
 
 These are the files to accompany the talk on Rmarkdown.
 <p align="center">
-  <img src="rmd-introimage.png" width="500px"/></p>
+  <img src="rmd-intro.png" width="500px"/></p>
 
 ## Handouts
 

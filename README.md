@@ -1,8 +1,8 @@
 # Rmarkdown session 2018-12-07
 
 These are the files to accompany the talk on Rmarkdown.
-
-![rmd-intro.png](.img "Slide 1")
+<p align="center">
+  <img src="rmd-introimage.png" width="500px"/></p>
 
 ## Handouts
 

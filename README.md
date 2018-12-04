@@ -6,9 +6,9 @@ These are the files to accompany the talk on Rmarkdown.
 
 1. [R markdown cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
 
-2. [estimatek.pdf](pi/estimatek.pdf)
+2. [estimatek.Rmd](https://github.com/sje30/2018-12-07-rmd/blob/master/pi/estimatek.Rmd)
 
-3. [estimatek.Rnw](pi/estimatek.Rnw)
+3. [estimatek.pdf](https://github.com/sje30/2018-12-07-rmd/blob/master/pi/estimatek.pdf)
 
 ## Slides
 

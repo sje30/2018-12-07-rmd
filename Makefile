@@ -10,7 +10,7 @@ all: $(MAIN)
 
 copy: $(MAIN)
 	cp $(MAIN) ~/txt/hugo/bd2/static/talks/2018/
-	cp -r simplesteps_files ~/txt/hugo/bd2/static/talks/2018/
+	cp -r rmd-intro_files ~/txt/hugo/bd2/static/talks/2018/
 	deploy.sh
 
 ## Making pdf version of slides takes a few seconds.

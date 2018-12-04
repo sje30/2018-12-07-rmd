@@ -28,7 +28,7 @@ rmd-intro.pdf: rmd-intro.html
 
 ## convert first page e.g. for making tweet of slides.
 rmd-intro.png: rmd-intro.pdf
-	convert rmd-intro.pdf[0] rmd-intro.png
+	convert -density 300 rmd-intro.pdf[0] rmd-intro.png
 
 copy2: $(MAIN)
 	scp $(MAIN) sje30@mea:web

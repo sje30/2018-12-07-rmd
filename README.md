@@ -26,6 +26,14 @@ To run this example, you need the following R packages installed
 install.packages(c("knitr", "bookdown", "kable", "printr"))
 ```
 
+## rticles
+
+For `rticles` you will need:
+
+```
+install.packages(c("rticles"))
+```
+
 
 
 ### Extra R dependencies to remake these slides (not required for session)
@@ -34,5 +42,6 @@ install.packages(c("knitr", "bookdown", "kable", "printr"))
 install.packages('devtools')
 install.packages('webshot')
 devtools::install_github('sje30/sjemea')
+devtools::install_github("thomasp85/patchwork")
 ```
 

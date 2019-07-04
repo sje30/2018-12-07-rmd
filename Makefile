@@ -24,7 +24,9 @@ copy: $(MAIN)
 ##	cp $@ ~/txt/hugo/bd2/static/talks/2018/
 
 rmd-intro.pdf: rmd-intro.html
-	#`npm bin`/decktape   --chrome-arg=--allow-file-access-from-files $^ $@
+	Rscript -e "pagedown::chrome_print(paste0('file:', normalizePath('rmd-intro.html')), browser='google-chrome-stable')"
+	cp $@ ~/txt/hugo/bd2/static/talks/2018/
+
 
 ## convert first page e.g. for making tweet of slides.
 rmd-intro.png: rmd-intro.pdf

@@ -102,10 +102,7 @@ imh = function(f,height=600) {
 ```
 
 ---
-
-
----
-# Literate programming
+## Literate programming
 
 Donald Knuth invented the literate programming environment to combine
 code and documentation into one file.
@@ -120,7 +117,7 @@ then translated into html (or pdf or Word or slides...).
 
 
 ---
-# Simple example of reproducible research
+## Simple example of reproducible research
 
 Eglen SJ (2016) Bivariate spatial point patterns in the retina: a
 reproducible review. Journal de la Société Française de Statistique
@@ -189,15 +186,18 @@ rnorm(n)
 
 
 ---
-## Figure outputs
 
-If your code generates a figure, it is saved into `figures/` folder and included in output.  (See
-bookdown for captions and references).
+## Figures
 
-	`​``{r eval=TRUE, echo=TRUE, fig.height=4}
-	x = rnorm(300, mean=4, sd=2)
-	hist(x)
-    `​``
+If your code generates a figure, it is saved into `figures/` folder
+and included in output.  (See bookdown for captions and references).
+
+    ‘‘‘{r eval=TRUE, echo=TRUE, fig.height=4}
+    x = rnorm(300, mean=4, sd=2)
+    hist(x)
+    ‘‘‘
+
+
 ```{r eval=TRUE,echo=TRUE,fig.height=4}
 x = rnorm(300, mean=4, sd=2)
 hist(x)
@@ -207,7 +207,8 @@ hist(x)
 ---
 ## Reproducible figures
 
-<!-- Never mind making a whole paper reproducible, how about just one figure? -->
+Never mind making a whole paper reproducible, how about just one figure?
+
 
 ```{r patchwork,chunk=FALSE,include=FALSE}
 ##devtools::install_github("thomasp85/patchwork")
@@ -241,7 +242,7 @@ book (captioning figures and tables, labels to refer to sections).
 <https://bookdown.org/>  <https://bookdown.org/yihui/bookdown/>
 
 ---
-# Challenges
+## Challenges
 
 * Long computation times (CODE CHECK).
 * licensed software complicates everything.
@@ -253,7 +254,7 @@ book (captioning figures and tables, labels to refer to sections).
 
 
 ---
-# Extended example
+## Extended example
 
 Let's work through the document to estimate pi.
 
@@ -265,7 +266,7 @@ is pubmed with BiBTeX.)
 
 
 ---
-# rticles
+## rticles
 
 The `rticles` package allows you to make Rmd templates for a growing
 number of journals, easing the adoption of formatting for journals.
@@ -274,10 +275,18 @@ number of journals, easing the adoption of formatting for journals.
 
 
 ---
-# Next steps
+## Next steps
 
 * Material from today at: <http://github.com/sje30/2018-12-07-rmd>
 * Jupyter <www.jupyter.org> as alternative format for notebook
   computation.
 * Two-way Rmd <-> docx conversion: <https://noamross.github.io/redoc/>
+* officedown <https://github.com/davidgohel/officedown>
+* pandoc toolkit <https://pandoc.org/> drives a lot of conversion from
+  markdown into other formats (EPUB, Word, PDF, XML...)
+  
+
+
+
+
 

@@ -62,9 +62,8 @@ Slides: http://bit.ly/eglen2018-rmd (CC-BY license)
 
 Laurent Gatto, Mike Smith.
 
-<!-- 
 (Last update `r date()`) 
- -->
+
 
 
 ```{r,include=FALSE}
@@ -104,28 +103,8 @@ imh = function(f,height=600) {
 
 ---
 
-# The reproducibility crisis
-
-Many key findings in publications are either not independently
-verified, or fail verification when it is attempted (Baker, 2016).
-`r doi("10.1038/533452a")`
-
-<br>
-Duke oncogenomics scandal.  Awesome detective work by Keith Baggerley
-and Kevin Coombes.
-<https://www.youtube.com/watch?v=7gYIs7uYbMo>
-
-
-<br>
-<br>
-
-Disclaimer: do I mean "reproducibility" or "replicability"?
-(Barba 2018) <https://arxiv.org/pdf/1802.03311.pdf>
-
 
 ---
-
-
 # Literate programming
 
 Donald Knuth invented the literate programming environment to combine
@@ -138,30 +117,6 @@ then translated into html (or pdf or Word or slides...).
 `r imh("rmd-to-md.png", 400)`
 
 
----
-# Moral or selfish approach?
-
-<br>
-
-`r imh("../../talkfigs/2016/Markowetz2015-selfish.png", 400)`
-
-`r doi("10.1186/s13059-015-0850-7")`
----
-# Selfish reasons to share
-
-Why not align what is good for science with what is good for
-scientists?
-
-
-1. Funding mandates (REF + enforcement from Wellcome Trust)
-2. Credit through data papers
-3. Fixes data bugs / errors in analysis
-4. Prevent data loss [(Vines et al 2014)](http://www.ncbi.nlm.nih.gov/pubmed/24361065). e.g. students have a habit of leaving...
-5. Your future self is probably one of the main beneficiaries of
-   sharing.
-6. *Now* is a very good time to be an open scientist.
-7. Leads to further collaborations
-8. Reviewers can do more work...
 
 
 ---
@@ -304,6 +259,19 @@ Let's work through the document to estimate pi.
 
 You will need `estimatek.Rmd` and `refs.bib`
 
+(References are in BiBTeX format; you can get them from google
+scholar, or e.g. from <https://www.bioinformatics.org/texmed/> which
+is pubmed with BiBTeX.)
+
+
+---
+# rticles
+
+The `rticles` package allows you to make Rmd templates for a growing
+number of journals, easing the adoption of formatting for journals.
+
+<https://github.com/rstudio/rticles>
+
 
 ---
 # Next steps
@@ -312,3 +280,4 @@ You will need `estimatek.Rmd` and `refs.bib`
 * Jupyter <www.jupyter.org> as alternative format for notebook
   computation.
 * Two-way Rmd <-> docx conversion: <https://noamross.github.io/redoc/>
+
